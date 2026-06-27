@@ -1,0 +1,1 @@
+mana_bar must be placed at mana_bar_decoration.x + 13
