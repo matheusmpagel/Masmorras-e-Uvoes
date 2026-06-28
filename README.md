@@ -36,6 +36,22 @@ https://caz-bee.itch.io/cute-fruit-characters
 Sprite do projétil: \
 https://mohammadmatinnik.itch.io/fantasy-garden-pixel-art-living-fruits-creatures-pack
 
+# **MÚSICAS**
+
+Música do Menu: \
+https://youtu.be/fcFl6BgK_vw?si=yuUdftQi9jUa_JSF
+
+Músicas da Gameplay: \
+https://youtu.be/-1LDIPBWjtU?si=FLV0CwGau9u1dLhg \
+https://youtu.be/O6Y9y2kOy0w?si=NqlEPGINZ4XAD2tg \
+https://youtu.be/nhVmOGoMC1I?si=P1RGWrgpPTXcJ3zX
+
+Som do Game Over: \
+https://youtu.be/nPGvhgOMu9g?si=syHolNUzJPmaNnX5
+
+Som do menu de vitória: \
+https://youtu.be/teUWsONJkk8?si=suoP9knUKDHUinUz
+
 Tiles dos Tilemaps: \
 https://anokolisa.itch.io/free-pixel-art-asset-pack-topdown-tileset-rpg-16x16-sprites
 
