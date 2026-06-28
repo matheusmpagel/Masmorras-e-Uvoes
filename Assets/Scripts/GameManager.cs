@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         if(cenaAtual + 1 < fases.Count)
         {
             cenaAtual++;
+            string proximaCena = fases[cenaAtual];
+            SomController.instancia.TrocarMusica(proximaCena);
             SceneManager.LoadScene(fases[cenaAtual]);
             Physics2D.IgnoreLayerCollision(6, 9, false);
         } 

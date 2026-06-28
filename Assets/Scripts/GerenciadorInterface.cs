@@ -14,19 +14,12 @@ public class GerenciadorInterface : MonoBehaviour
     [SerializeField] private GameObject menuOpcoes;
     [SerializeField] private GameObject hud;
 
-
-    [Header("Áudio")]
-    [SerializeField] private TMP_Text txtBtnSom;
-    [SerializeField] private AudioSource somController;
-    [SerializeField] private Slider volumeGeral;
-
     [Header("Painéis da UI")]
     [SerializeField] private GameObject painelGameOver;
     public GameObject painelPausa;
     public GameObject menuVenceu;
 
     private bool jogoPausado = false;
-    private bool mute = false;
     private bool emGameplay = false;
     
     void Awake()
@@ -66,6 +59,8 @@ public class GerenciadorInterface : MonoBehaviour
         menuVenceu.SetActive(false);
         Physics2D.IgnoreLayerCollision(6, 9, false);
         hud.SetActive(true);
+        SomController.instancia.musicaMenu.Stop();
+        SomController.instancia.TrocarMusica("Fase1");
         emGameplay = true;
     }
 
@@ -86,6 +81,7 @@ public class GerenciadorInterface : MonoBehaviour
             painelGameOver.SetActive(false);
             painelPausa.SetActive(false);
             hud.SetActive(false);
+
         }
     }
 
@@ -101,6 +97,10 @@ public class GerenciadorInterface : MonoBehaviour
         hud.SetActive(false);
         jogoPausado = false;
         emGameplay = false;
+        SomController.instancia.musicaJogo.Stop();
+        SomController.instancia.musicaGameOver.Stop();
+        SomController.instancia.musicaVitoria.Stop();
+        SomController.instancia.musicaMenu.Play();
     }
 
     public void Pausar(InputAction.CallbackContext contexto)
@@ -122,6 +122,7 @@ public class GerenciadorInterface : MonoBehaviour
         menuOpcoes.SetActive(false);
         painelGameOver.SetActive(false);
         hud.SetActive(false);
+        SomController.instancia.musicaJogo.Pause();
         Time.timeScale = 0f;
     }
 
@@ -134,6 +135,7 @@ public class GerenciadorInterface : MonoBehaviour
         painelGameOver.SetActive(false);
         painelPausa.SetActive(false);
         hud.SetActive(true);
+        SomController.instancia.musicaJogo.UnPause();
         Time.timeScale = 1f;
 
     }
@@ -147,6 +149,8 @@ public class GerenciadorInterface : MonoBehaviour
         painelPausa.SetActive(false);
         hud.SetActive(false);
         emGameplay = false;
+        SomController.instancia.musicaJogo.Stop();
+        SomController.instancia.musicaGameOver.Play();
         Time.timeScale = 0f;
     }
 
@@ -164,6 +168,10 @@ public class GerenciadorInterface : MonoBehaviour
         jogoPausado = false;
         emGameplay = true;
         Physics2D.IgnoreLayerCollision(6, 9, false);
+        SomController.instancia.musicaJogo.Stop();
+        SomController.instancia.musicaGameOver.Stop();
+        SomController.instancia.musicaVitoria.Stop();
+        SomController.instancia.musicaJogo.Play();
         SceneManager.LoadScene(cenaAtual);
     }
 
@@ -175,6 +183,8 @@ public class GerenciadorInterface : MonoBehaviour
         painelPausa.SetActive(false);
         menuVenceu.SetActive(true);
         hud.SetActive(false);
+        SomController.instancia.musicaJogo.Stop();
+        SomController.instancia.musicaVitoria.Play();
         emGameplay = false;
         Time.timeScale = 0f;
     }
@@ -182,18 +192,5 @@ public class GerenciadorInterface : MonoBehaviour
     public void Sair()
     {
         Application.Quit();
-    }
-
-    public void Mutar()
-    {
-        mute = !mute;
-        somController.mute = mute;
-        if(mute) { txtBtnSom.text = "DESATIVADO";} 
-        else{ txtBtnSom.text = "ATIVADO";}
-    }
-
-    public void AjustarSom()
-    {
-        somController.volume = volumeGeral.value;
     }
 }
